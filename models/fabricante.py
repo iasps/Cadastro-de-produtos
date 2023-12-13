@@ -16,9 +16,9 @@ class Fabricante:
 
     def set_id(self, id): self.__id = id
     def set_nome(self, nome): self.__nome = nome
-    def set_email(self, email): self.__email
-    def set_endereco(self, endereco): self.__endereco
-    def set_telefone(self, telefone): self.__telefone
+    def set_email(self, email): self.__email = email
+    def set_endereco(self, endereco): self.__endereco = endereco
+    def set_telefone(self, telefone): self.__telefone = telefone
 
 class NFabricante:
     __fabricantes = []

@@ -16,12 +16,12 @@ class Produto:
     def get_id_grupo(self): return self.__id_grupo
     def get_id_fabricante(self): return self.__id_fabricante
 
-    def set_id(self, id): self.__id
-    def set_nome(self, nome): self.__nome
-    def set_descricao(self, descricao): self.__descricao
-    def set_preco(self, preco): self.__preco
-    def set_id_grupo(self, id_grupo): self.__id_grupo
-    def set_id_fabricante(self, id_fabricante): self.__id_fabricante
+    def set_id(self, id): self.__id = id
+    def set_nome(self, nome): self.__nome = nome
+    def set_descricao(self, descricao): self.__descricao = descricao
+    def set_preco(self, preco): self.__preco = preco
+    def set_id_grupo(self, id_grupo): self.__id_grupo = id_grupo
+    def set_id_fabricante(self, id_fabricante): self.__id_fabricante = id_fabricante
 
 
 class NProduto:

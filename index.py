@@ -6,8 +6,8 @@ from templates.manterprodutoUI import ManterProdutoUI
 from templates.mantergrupoUI import ManterGrupoUI
 from templates.manterfabricanteUI import ManterFabricanteUI
 from templates.manteradmUI import ManterAdmUI
-from templates.editarperfilUI import EditarPerfilUI
-# from views import View
+# from templates.editarperfilUI import EditarPerfilUI
+from views import View
 import streamlit as st
 
 class IndexUI:
@@ -20,13 +20,14 @@ class IndexUI:
     if op == "Login": LoginUI.main()
 
   def menu_adm():
-    op = st.sidebar.selectbox("Menu", ["Manter Produto", "Manter Grupo", "Manter Fabricante",  "Manter Adm","Editar perfil"])
+    op = st.sidebar.selectbox("Menu", ["Manter Produto", "Manter Grupo", "Manter Fabricante", "Manter Adm"]) #, "Editar perfil"])
     if op == "Manter Produto": ManterProdutoUI.main()
     if op == "Manter Grupo": ManterGrupoUI.main()
     if op == "Manter Fabricante": ManterFabricanteUI.main()
     if op == "Manter Adm": ManterAdmUI.main()
-    if op == "Editar perfil": EditarPerfilUI.main()
+    # if op == "Editar perfil": EditarPerfilUI.main()
 
+################
 
   def btn_logout():
     if st.sidebar.button("Logout"):

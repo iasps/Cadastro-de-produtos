@@ -12,8 +12,8 @@ class ManterGrupoUI:
     with tab4: ManterGrupoUI.excluir()
 
 
-  def grupos_fixos():
-    grupos_fixos = ["Todos", "Alimentos e Bebidas", "Automotivos", "Eletrônicos", "Eletrodomésticos", "Móveis", "Brinquedos", "Outros"]
+  # def grupos_fixos():
+  #   grupos_fixos = ["Todos", "Alimentos e Bebidas", "Automotivos", "Eletrônicos", "Eletrodomésticos", "Móveis", "Brinquedos", "Outros"]
 
   def listar():
     grupos = View.grupo_listar()

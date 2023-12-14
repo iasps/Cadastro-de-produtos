@@ -35,8 +35,7 @@ class View:
         return adm
     return None
 
-
-
+########################################################
 
   def produto_inserir(nome, descricao, preco, id_grupo, id_fabricante):
     if preco < 0: raise ValueError("Preço inválido")
@@ -64,11 +63,7 @@ class View:
   #       n.append(produto)
   #   return n
 
-
-
-
-
-
+########################################################
 
   def grupo_inserir(nome):
     NGrupo.inserir(Grupo(0, nome))
@@ -85,12 +80,7 @@ class View:
   def grupo_excluir(id):
     NGrupo.excluir(Grupo(id, ""))
 
-
-
-
-
-
-
+########################################################
 
   def fabricante_inserir(nome, email, endereço, telefone):
     NFabricante.inserir(Fabricante(0, nome, email, endereço, telefone))
@@ -106,8 +96,3 @@ class View:
 
   def fabricante_excluir(id):
     NFabricante.excluir(Fabricante(id, "", "", "", ""))
-
-
-
-
-

@@ -1,8 +1,8 @@
-# from models.grupo import Grupo, NGrupo
+from models.grupo import Grupo, NGrupo
 from models.produto import Produto, NProduto
-# from models.fabricante import Fabricante, NFabricante
+from models.fabricante import Fabricante, NFabricante
 from models.adm import Adm, NAdm
-# import datetime
+import datetime
 
 class View:
 
@@ -38,15 +38,15 @@ class View:
 
 
 
+  def produto_inserir(nome, descricao, preco, id_grupo, id_fabricante):
+    if preco < 0: raise ValueError("Preço inválido")
+    NProduto.inserir(Produto(0, nome, descricao, preco, id_grupo, id_fabricante))
+
   def produto_listar():
     return NProduto.listar()
 
   def produto_listar_id(id):
     return NProduto.listar_id(id)
-
-  def produto_inserir(nome, descricao, preco, id_grupo, id_fabricante):
-    if preco < 0: raise ValueError("Preço inválido")
-    NProduto.inserir(Produto(0, nome, descricao, preco, id_grupo, id_fabricante))
 
   def produto_atualizar(id, nome, descricao, preco, id_grupo, id_fabricante):
     if preco < 0: raise ValueError("Preço inválido")
@@ -54,6 +54,58 @@ class View:
 
   def produto_excluir(id):
     NProduto.excluir(Produto(id, "", "", 0, 0, 0))
+
+  # def produto_novidade():
+  #   n = []
+  #   hoje = datetime.datetime.today()
+  #   semana = hoje + datetime.timedelta(days = 7)
+  #   for produto in View.produto_listar():
+  #     if semana.date() >= produto.get_data().date() >= hoje.date():
+  #       n.append(produto)
+  #   return n
+
+
+
+
+
+
+
+  def grupo_inserir(nome):
+    NGrupo.inserir(Grupo(0, nome))
+
+  def grupo_listar():
+    return NGrupo.listar()
+
+  def grupo_listar_id(id):
+    return NGrupo.listar_id(id)
+
+  def grupo_atualizar(id, nome):
+    NGrupo.atualizar(Grupo(id, nome))
+
+  def grupo_excluir(id):
+    NGrupo.excluir(Grupo(id, ""))
+
+
+
+
+
+
+
+
+  def fabricante_inserir(nome, email, endereço, telefone):
+    NFabricante.inserir(Fabricante(0, nome, email, endereço, telefone))
+
+  def fabricante_listar():
+    return NFabricante.listar()
+
+  def fabricante_listar_id(id):
+    return NFabricante.listar_id(id)
+
+  def fabricante_atualizar(id, nome, email, endereço, telefone):
+    NFabricante.atualizar(Fabricante(id, nome, email, endereço, telefone))
+
+  def fabricante_excluir(id):
+    NFabricante.excluir(Fabricante(id, "", "", "", ""))
 
 
 

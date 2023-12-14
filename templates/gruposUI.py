@@ -4,8 +4,8 @@ import streamlit as st
 
 class GruposUI:
     def main():
-       st.header("Grupos")
-       tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs(["Todos", "Alimentos e Bebidas", "Automotivos", "Eletrônicos", "Eletrodomésticos", "Móveis", "Brinquedos", "Outros"])
+      st.header("Grupos")
+      tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs(["Todos", "Alimentos e Bebidas", "Automotivos", "Eletrônicos", "Eletrodomésticos", "Móveis", "Brinquedos", "Outros"])
     #    with tab1: GruposUI.grupos_todos()
     #    with tab2: GruposUI.alimentosebebidas()
     #    with tab3: GruposUI.automotivos()

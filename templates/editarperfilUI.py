@@ -8,9 +8,8 @@ class EditarPerfilUI:
 
     def atualizar():
         op = View.adm_listar_id(st.session_state["adm_id"])
-        # nome = "adm"
-        # if op.get_nome() != "adm":
-        nome = st.text_input("Informe o novo nome", op.get_nome())
+        nome = "adm"
+        # if op.get_nome() != "adm":        nome = st.text_input("Informe o novo nome", op.get_nome())
         email = st.text_input("Informe o novo e-mail", op.get_email())
         senha = st.text_input("Informe a nova senha")
         if st.button("Editar"):

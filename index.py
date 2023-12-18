@@ -45,7 +45,7 @@ class IndexUI:
       IndexUI.btn_logout()  
 
   def main():
-    # View.adm()
+    View.adm_adm()
     IndexUI.sidebar()
 
 IndexUI.main()

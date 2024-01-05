@@ -6,7 +6,6 @@ from templates.manterprodutoUI import ManterProdutoUI
 from templates.mantergrupoUI import ManterGrupoUI
 from templates.manterfabricanteUI import ManterFabricanteUI
 from templates.manteradmUI import ManterAdmUI
-# from templates.editarperfilUI import EditarPerfilUI
 from views import View
 import streamlit as st
 

@@ -18,6 +18,21 @@ class Adm:
   def set_email(self, email): self.__email = email
   def set_senha(self, senha): self.__senha = senha
 
+  def __eq__(self, x):
+    if self.__id == x.__id and self.__nome == x.__nome and self.__email == x.__email and self.__senha == x.__senha:
+      return True
+    return False
+
+  def __str__(self):
+    return f"{self.__id} - {self.__nome} - {self.__email} - {self.__senha}"
+
+  def to_json(self):
+    return {
+      'Id' : self.__id,
+      'Nome' : self.__nome,
+      'E-mail' : self.__email,
+      'Senha' : self.__senha}
+
 class NAdm(CRUD):
   @classmethod
   def abrir(cls):
@@ -27,9 +42,9 @@ class NAdm(CRUD):
         adms_json = json.load(arquivo)
         for obj in adms_json:
           aux = Adm(obj["_Adm__id"], 
-                        obj["_Adm__nome"], 
-                        obj["_Adm__email"],
-                        obj["_Adm__senha"])
+                    obj["_Adm__nome"], 
+                    obj["_Adm__email"],
+                    obj["_Adm__senha"])
           cls.objetos.append(aux)
     except FileNotFoundError:
       pass
@@ -42,71 +57,3 @@ class NAdm(CRUD):
 
 
 
-
-
-
-
-
-
-
-  # __adms = []  # lista de adms inicia vazia
-
-  # @classmethod
-  # def inserir(cls, obj):
-  #   cls.abrir()
-  #   id = 0  # encontrar o maior id já usado
-  #   for aux in cls.__adms:
-  #     if aux.get_id() > id: id = aux.get_id()
-  #   obj.set_id(id + 1)
-  #   cls.__adms.append(obj)  # insere um adm (obj) na lista
-  #   cls.salvar()
-
-  # @classmethod
-  # def listar(cls):
-  #   cls.abrir()
-  #   return cls.__adms  # retorna a lista de adms
-
-  # @classmethod
-  # def listar_id(cls, id):
-  #   cls.abrir()
-  #   for obj in cls.__adms:
-  #     if obj.get_id() == id: return obj
-  #   return None
-
-  # @classmethod
-  # def atualizar(cls, obj):
-  #   cls.abrir()
-  #   aux = cls.listar_id(obj.get_id())
-  #   if aux is not None:
-  #     aux.set_nome(obj.get_nome())
-  #     aux.set_email(obj.get_email())
-  #     aux.set_senha(obj.get_senha())
-  #     cls.salvar()
-
-  # @classmethod
-  # def excluir(cls, obj):
-  #   cls.abrir()
-  #   aux = cls.listar_id(obj.get_id())
-  #   if aux is not None:
-  #     cls.__adms.remove(aux)
-  #     cls.salvar()
-
-  # @classmethod
-  # def abrir(cls):
-  #   cls.__adms = []
-  #   try:
-  #     with open("adms.json", mode="r") as arquivo:
-  #       adms_json = json.load(arquivo)
-  #       for obj in adms_json:
-  #         aux = Adm(obj["_Adm__id"], 
-  #                       obj["_Adm__nome"], 
-  #                       obj["_Adm__email"],
-  #                       obj["_Adm__senha"])
-  #         cls.__adms.append(aux)
-  #   except FileNotFoundError:
-  #     pass
-
-  # @classmethod
-  # def salvar(cls):
-  #   with open("adms.json", mode="w") as arquivo:
-  #     json.dump(cls.__adms, arquivo, default=vars)

@@ -22,19 +22,35 @@ class Fabricante:
     def set_endereco(self, endereco): self.__endereco = endereco
     def set_telefone(self, telefone): self.__telefone = telefone
 
+    def __eq__(self, x):
+        if self.__id == x.__id and self.__nome == x.__nome and self.__email == x.__email and self.__endereco == x.__endereco and self.__telefone == x.__telefone:
+            return True
+        return False
+
+    def __str__(self):
+        return f"{self.__id} - {self.__nome} - {self.__email} - {self.__endereco} - {self.__telefone}"
+
+    def to_json(self):
+        return {
+            'Id' : self.__id,
+            'Nome' : self.__nome,
+            'Email' : self.__email,
+            'Endereco' : self.__endereco,
+            'Telefone' : self.__telefone}
+
 class NFabricante(CRUD):
     @classmethod
     def abrir(cls):
         cls.objetos = []
         try:
-            with open("grupos.json", mode="r") as arquivo:
+            with open("fabricantes.json", mode="r") as arquivo:
                 fabricante_json = json.load(arquivo)
                 for obj in fabricante_json:
-                    aux = Fabricante(obj["Fabricante_id"], 
-                                     obj["Fabricante_nome"],
-                                     obj["Fabricante_email"],
-                                     obj["Fabricante_endereco"],
-                                     obj["Fabricante_telefone"])
+                    aux = Fabricante(obj["_Fabricante__id"], 
+                                     obj["_Fabricante__nome"],
+                                     obj["_Fabricante__email"],
+                                     obj["_Fabricante__endereco"],
+                                     obj["_Fabricante__telefone"])
                     cls.objetos.append(aux)
         except FileNotFoundError:
             pass
@@ -46,70 +62,3 @@ class NFabricante(CRUD):
 
 
 
-
-
-
-            
-    # __fabricantes = []
-
-    # @classmethod
-    # def inserir(cls, obj):
-    #     cls.abrir()
-    #     id = 0
-    #     for aux in cls.__fabricantes:
-    #         if aux.get_id() > id: id = aux.get_id()
-    #     obj.set_id(id + 1)
-    #     cls.__fabricantes.append(obj)
-    #     cls.salvar()
-
-    # @classmethod
-    # def listar(cls):
-    #     cls.abrir()
-    #     return cls.__fabricantes
-
-    # @classmethod
-    # def listar_id(cls, id):
-    #     cls.abrir()
-    #     for obj in cls.__fabricantes:
-    #         if obj.get_id() == id: return obj
-    #     return None
-
-    # @classmethod
-    # def atualizar(cls, obj):
-    #     cls.abrir()
-    #     aux = cls.listar_id(obj.get_id())
-    #     if aux is not None:
-    #         aux.set_nome(obj.get_nome())
-    #         aux.set_email(obj.get_email())
-    #         aux.set_endereço(obj.get_endereço())
-    #         aux.set_telefone(obj.get_telefone())
-    #         cls.salvar()
-
-    # @classmethod
-    # def excluir(cls, obj):
-    #     cls.abrir()
-    #     aux = cls.listar_id(obj.get_id())
-    #     if aux is not None:
-    #         cls.__fabricantes.remove(aux)
-    #         cls.salvar()
-
-    # @classmethod
-    # def abrir(cls):
-    #     cls.__fabricantes = []
-    #     try:
-    #         with open("grupos.json", mode="r") as arquivo:
-    #             fabricante_json = json.load(arquivo)
-    #             for obj in fabricante_json:
-    #                 aux = Fabricante(obj["Fabricante_id"], 
-    #                                  obj["Fabricante_nome"],
-    #                                  obj["Fabricante_email"],
-    #                                  obj["Fabricante_endereco"],
-    #                                  obj["Fabricante_telefone"])
-    #                 cls.__fabricantes.append(aux)
-    #     except FileNotFoundError:
-    #         pass
-
-    # @classmethod
-    # def salvar(cls):
-    #     with open("fabricantes.json", mode="w") as arquivo:
-    #         json.dump(cls.__fabricantes, arquivo, default=vars)

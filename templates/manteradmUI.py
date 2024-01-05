@@ -52,5 +52,11 @@ class ManterAdmUI:
       op = st.selectbox("Exclusão de Adms", adms)
       if st.button("Excluir"):
         id = op.get_id()
-        View.adm_excluir(id)
-        st.success("Adm excluído com sucesso")
+        if len(adms) == 1:
+          st.error("Não é possível excluir o adm. São necessários no mínimo dois adm's para poder excluir um.")
+        else:
+          View.adm_excluir(id)
+          st.success("Adm excluído com sucesso")
+        # id = op.get_id()
+        # View.adm_excluir(id)
+        # st.success("Adm excluído com sucesso")

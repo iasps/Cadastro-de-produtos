@@ -1,17 +1,25 @@
 import streamlit as st
-# import pandas as pd
-# from views import View
+
+from views import View
+import pandas as pd
+from views import View
 
 class GruposUI:
-    def main():
-      st.header("Grupos")
-      tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs(["Todos", "Alimentos e Bebidas", "Automotivos", "Eletrônicos", "Eletrodomésticos", "Móveis", "Brinquedos", "Outros"])
-    #    with tab1: GruposUI.grupos_todos()
-    #    with tab2: GruposUI.alimentosebebidas()
-    #    with tab3: GruposUI.automotivos()
-    #    with tab4: GruposUI.eletronicos()
-    #    with tab5: GruposUI.eletrodomesticos()
-    #    with tab6: GruposUI.moveis()
-    #    with tab7: GruposUI.brinquedos()
-    #    with tab8: GruposUI.outros()
- 
+  def main():
+    st.header("Grupos")
+    tabs = []
+    grupos = View.grupo_listar()
+    if len(grupos) == 0:
+      st.write("Nenhum grupo cadastrado")
+    else:
+      for grupo in grupos:
+        nome = grupo.get_nome()
+        tabs.append(nome)
+
+      tabsui = st.tabs(tabs)
+
+      for i in range(len(tabs)):
+        with tabsui[i]:
+          data = View.produto_do_grupo(tabs[i])
+          df = pd.DataFrame(data)
+          st.dataframe(df, hide_index=True)

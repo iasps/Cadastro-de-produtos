@@ -52,13 +52,13 @@ class ManterProdutoUI:
       grupos = View.grupo_listar()
       grupo_atual = View.grupo_listar_id(op.get_id_grupo())
       if grupo_atual is not None:
-        grupo = st.selectbox("Selecione o novo grupo", grupos, grupos.index(grupo_atual))
+        grupo = st.selectbox("Selecione o novo grupo", grupos)
       else:
         grupo = st.selectbox("Selecione o novo grupo", grupos)
       fabricantes = View.fabricante_listar()
       fabricante_atual = View.fabricante_listar_id(op.get_id_fabricante())
       if fabricante_atual is not None:
-        fabricante = st.selectbox("Selecione o novo fabricante", fabricantes, fabricantes.index(fabricante_atual))
+        fabricante = st.selectbox("Selecione o novo fabricante", fabricantes)
       else:
         fabricante = st.selectbox("Selecione o novo fabricante", fabricantes)
       if st.button("Atualizar"):

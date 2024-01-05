@@ -19,6 +19,6 @@ class LoginUI:
         st.session_state["adm_id"] = adm.get_id()
         st.session_state["adm_nome"] = adm.get_nome()
         time.sleep(2)
-        st.rerun()
+        # st.rerun()
       else:
         st.error("Usuário ou senha inválido(s)")

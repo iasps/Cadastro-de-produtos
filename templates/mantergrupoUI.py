@@ -43,7 +43,6 @@ class ManterGrupoUI:
         View.grupo_atualizar(id, nome)
         st.success("Grupo atualizado com sucesso")
 
-
   def excluir():
     grupos = View.grupo_listar()
     if len(grupos) == 0:

@@ -66,7 +66,21 @@ class View:
 ########################################################
 
   def grupo_inserir(nome):
-    NGrupo.inserir(Grupo(0, nome))
+    grupo = Grupo(0, nome)
+    NGrupo.inserir(grupo)
+
+  def produto_do_grupo(nome):
+    produtosdogrupo = []
+    produtos = NProduto.listar  ()
+    for produto in produtos:
+      id_do_grupo = produto.get_id_grupo()
+      nomedogrupo = View.grupo_listar_id(id_do_grupo)
+      nomedogrupo = nomedogrupo.get_nome()
+      print(nomedogrupo)
+      print(nome)
+      if nomedogrupo == nome:
+        produtosdogrupo.append(produto)
+    return produtosdogrupo
 
   def grupo_listar():
     return NGrupo.listar()
